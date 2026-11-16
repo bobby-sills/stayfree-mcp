@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stayfree-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "vars": {
+    // Your time zone (IANA name). Days and hours are counted in this zone.
+    "TIMEZONE": "UTC"
+  },
+  // Stores this connector's StayFree device ID and your device group. Created automatically on deploy.
+  "kv_namespaces": [{ "binding": "STATE" }],
+  "observability": { "enabled": true }
+}

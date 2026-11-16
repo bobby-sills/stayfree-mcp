@@ -1,0 +1,38 @@
+{
+  "name": "stayfree-mcp",
+  "version": "1.0.0",
+  "description": "Unofficial StayFree screen time connector (MCP server) for Claude, on Cloudflare Workers",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc",
+    "test": "node --experimental-strip-types test/usage.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261113.1",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.161.0"
+  },
+  "private": true,
+  "type": "module",
+  "cloudflare": {
+    "bindings": {
+      "TIMEZONE": {
+        "description": "Your time zone in IANA format, e.g. `Asia/Vientiane`, `America/New_York` or `Europe/London`. Used to decide where each day starts."
+      },
+      "MCP_SECRET": {
+        "description": "A long random string you make up (at least 16 letters and numbers). It becomes the end of your connector URL, like `...workers.dev/mcp/YOUR_SECRET`. Anyone with that URL can read your screen time, so keep it private."
+      },
+      "STATE": {
+        "description": "Storage for the connector's device ID and your StayFree device group. Leave the default."
+      }
+    }
+  }
+}
